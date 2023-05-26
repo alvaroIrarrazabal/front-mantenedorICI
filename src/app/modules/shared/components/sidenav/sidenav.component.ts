@@ -13,7 +13,7 @@ mobileQuery:MediaQueryList;
 
 menuNav =[
   {name : "Inicio", route: "home" , icon:"home"},
-  {name : "Personas", route: "home" , icon:"people"},
+  {name : "Personas", route: "persona" , icon:"people"},
   {name : "Productos", route: "home" , icon:"home"}
 ]
 
