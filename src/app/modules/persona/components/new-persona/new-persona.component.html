@@ -1,0 +1,152 @@
+<h2 mat-dialog-title>Agregar nueva Persona</h2>
+<mat-dialog-content>
+  <form [formGroup]="personaForm">
+    <div class="persona-container">
+      <mat-form-field>
+        <input matInput placeholder="Nombre" formControlName="nombre" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Apellido paterno" formControlName="apellidoPaterno" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Apellido Materno" formControlName="apellidoMaterno" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Telefono" formControlName="telefono" required>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="cumple">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <mat-label>Paises</mat-label>
+        <mat-select formControlName="pais" (selectionChange)="buscarPais($event)">
+          <mat-option [value]="pais.id" *ngFor="let pais of paises">
+            {{pais.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Region</mat-label>
+        <mat-select formControlName="region" (selectionChange)="buscarRegion($event)">
+          <mat-option *ngFor="let region of regiones" [value]="region.id">
+            {{region.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Comunas</mat-label>
+        <mat-select formControlName="comuna">
+          <mat-option *ngFor="let comuna of comunas" [value]="comuna.id">
+            {{comuna.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <mat-label>Supervisor</mat-label>
+        <mat-select formControlName="supervisorId">
+          <mat-option *ngFor="let super of supervisores" [value]="super.id">
+            {{super.nombre}} {{super.apellidoPaterno}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Genero</mat-label>
+        <mat-select formControlName="genero">
+          <mat-option *ngFor="let genero of genero" [value]="genero.id">
+            {{genero.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Estado Civil</mat-label>
+        <mat-select formControlName="estadoCivil">
+          <mat-option *ngFor="let estado of estadoCivil" [value]="estado.nombre">
+            {{estado.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Red Social" formControlName="redSocial" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Conyuge</mat-label>
+        <mat-select formControlName="conyugeId">
+          <mat-option *ngFor="let conyuge of casados" [value]="conyuge.id">
+            {{conyuge.nombre}} {{conyuge.apellidoPaterno}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Madre</mat-label>
+        <mat-select formControlName="madreId">
+          <mat-option *ngFor="let mama of madres" [value]="mama.id">
+            {{mama.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Padre</mat-label>
+        <mat-select formControlName="padreId">
+          <mat-option *ngFor="let papa of padres" [value]="papa.id">
+            {{papa.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ocupacion</mat-label>
+        <mat-select formControlName="ocupacionId">
+          <mat-option *ngFor="let ocupacion of ocupaciones" [value]="ocupacion.id">
+            {{ocupacion.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Roles</mat-label>
+        <mat-select formControlName="roles">
+          <mat-option *ngFor="let rol of roles" [value]="rol.id">
+            {{rol.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+
+
+
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="primary" (click)="guardarPersona()">
+    <mat-icon>save</mat-icon>Guardar
+  </button>
+
+  <button mat-button color="primary" (click)="cancelar()">
+    <mat-icon>cancel</mat-icon>Cancelar
+  </button>
+</mat-dialog-actions>

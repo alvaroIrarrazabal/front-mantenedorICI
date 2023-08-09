@@ -4,12 +4,14 @@ import { PersonaComponent } from './components/persona/persona.component';
 import { MaterialModule } from '../shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewPersonaComponent } from './components/new-persona/new-persona.component';
 
 
 
 @NgModule({
   declarations: [
-    PersonaComponent
+    PersonaComponent,
+    NewPersonaComponent
   ],
   imports: [
     CommonModule,

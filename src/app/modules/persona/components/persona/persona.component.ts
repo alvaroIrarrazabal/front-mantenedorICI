@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { PersonaService } from 'src/app/modules/shared/services/persona.service';
+import { NewPersonaComponent } from '../new-persona/new-persona.component';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-persona',
@@ -10,7 +13,8 @@ import { PersonaService } from 'src/app/modules/shared/services/persona.service'
 export class PersonaComponent implements OnInit {
 
 
-  constructor(private personaService:PersonaService){ }
+  constructor(private personaService:PersonaService,
+              public dialog: MatDialog, private snackBar:MatSnackBar){ }
 
   ngOnInit(): void {
     this.getPersonas()
@@ -41,6 +45,30 @@ dataPersona.push(element);
 }
 
 
+}
+
+
+openPersonaDialog(){
+  const dialogRef = this.dialog.open( NewPersonaComponent, {
+    width:'60%',
+    height:'80vh'
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if(result==1){
+this.openSnackBar("Persona agregada","exito");
+this.getPersonas();
+    }else if(result==2){
+      this.openSnackBar("Persona NO agregada","Error")
+
+    }
+  });
+}
+
+openSnackBar(message:string, action:string):MatSnackBarRef<SimpleSnackBar>{
+  return this.snackBar.open(message,action,{
+    duration:2000
+  })
 }
 
 

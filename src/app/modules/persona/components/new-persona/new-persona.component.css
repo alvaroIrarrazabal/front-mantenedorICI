@@ -1,0 +1,11 @@
+
+
+.persona-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.persona-container{
+ width: 100%;
+}
+
